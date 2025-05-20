@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(to right, #004d4d 40%, transparent 96%),
+        url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1600') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: right;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      width: 400px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #004d4d;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus {
+      border-color: #009999;
+      box-shadow: 0 0 5px #00cccc;
+    }
+
+    .login-btn {
+      background-color: #007777;
+      color: #fff;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .login-btn:hover {
+      background-color: #009999;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      display: none;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Accès Administrateur</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" required placeholder="Votre mot de passe" />
+      </div>
+
+      <div class="input-group">
+        <label for="admincode">Code administrateur</label>
+        <input type="text" id="admincode" required placeholder="Code secret" />
+      </div>
+
+      <button type="submit" class="login-btn">Connexion</button>
+    </form>
+    <div class="message" id="messageBox"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const messageBox = document.getElementById('messageBox');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const password = document.getElementById('password').value.trim();
+      const admincode = document.getElementById('admincode').value.trim();
+
+      if (password.length < 6) {
+        showMessage("Mot de passe trop court (min. 6 caractères)", 'red');
+        return;
+      }
+
+      if (admincode.length < 4) {
+        showMessage("Code administrateur invalide", 'red');
+        return;
+      }
+
+      showMessage("Connexion en cours...", '#007777');
+      //setTimeout simulating a network request
+      setTimeout(() => {
+        showMessage("Connexion réussie!", 'green');
+        form.reset();
+      }, 1500);
+    });
+
+    function showMessage(msg, color) {
+      messageBox.style.color = color;
+      messageBox.textContent = msg;
+      messageBox.style.display = 'block';
+      messageBox.style.animation = 'fadeIn 0.5s';
+    }
+  </script>
+</body>
+</html>

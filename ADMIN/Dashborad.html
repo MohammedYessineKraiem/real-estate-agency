@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="Squelette.css">
+  <title>Dashboard - Admin Panel</title>
+</head>
+<style>
+    /* Dashboard.css */
+    :root {
+    --primary: #2d6a4f;
+    --accent: #40916c;
+    --background: #f1fbe9;
+    --text: #081c15;
+    --highlight: #95d5b2;
+    --hover-bg: #d8f3dc;
+    }
+
+    .content {
+    margin-left: 270px;
+    padding: 40px;
+    min-height: 100vh;
+    background-color: var(--background);
+    color: var(--text);
+    }
+
+    h1 {
+    margin-bottom: 30px;
+    }
+
+    .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+    }
+
+    .card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+    text-align: center;
+    }
+
+    .card:hover {
+    transform: translateY(-4px);
+    background-color: var(--hover-bg);
+    }
+
+    .card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--primary);
+    }
+
+    .card p {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--accent);
+    }
+
+    .quick-graph {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .quick-graph h2 {
+    margin-bottom: 20px;
+    color: var(--primary);
+    }
+
+</style>
+<body>
+
+  <div class="sidebar">
+        <div>
+        <h2>Admin Panel</h2>
+        <a href="MainPage.html">Main Page</a>
+        <a href="Dashborad.html" class="active">Dashboard</a>
+        <a href="UserLists.html">User List</a>
+        <a href="ReservationList.html">Reservation List</a>
+        <a href="OffersList.html">Offers List</a>
+        <a href="PaymentHistory.html">Payment History</a>
+        <a href="Communication.html">Messages</a>
+        <a href="ChangePassword.html">Change Password</a>
+        <a href="Access.html">Grant Access</a>
+        </div>
+        <div>
+        <button class="logout-btn" id="logoutBtn" onclick="window.location.href='LoginAdmin.html'">Logout</button>
+        <small>&copy; 2025 Admin</small>
+        </div>
+  </div>
+
+  <div class="content">
+        <h1>Tableau de bord analytique</h1>
+
+        <div class="dashboard-grid">
+        <div class="card">
+            <h3>Total Utilisateurs</h3>
+            <p id="total-users">0</p>
+            <small>Inscrits ce mois</small>
+        </div>
+        <div class="card">
+            <h3>Réservations</h3>
+            <p id="total-reservations">0</p>
+            <small>Nouvelles réservations ce mois</small>
+        </div>
+        <div class="card">
+            <h3>Biens listés</h3>
+            <p id="total-properties">0</p>
+            <small>Actuellement actifs</small>
+        </div>
+        <div class="card">
+            <h3>Revenus</h3>
+            <p id="revenue">0 DT</p>
+            <small>Ce mois</small>
+        </div>
+        </div>
+
+        <div class="chart-section">
+        <h2>Activité mensuelle & journalière</h2>
+        <div class="charts-grid">
+            <canvas id="userChart"></canvas>
+            <canvas id="reservationChart"></canvas>
+            <canvas id="dailyIncomeChart"></canvas>
+        </div>
+        </div>
+    </div>
+
+  <footer>
+    &copy; 2025 Ideal Immobiliere – All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="Dashboard.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

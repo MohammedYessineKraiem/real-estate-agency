@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="Squelette.css">
+  <title>Users</title>
+</head>
+<style>
+    /* User List Page */
+    .content {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+        color: var(--primary);
+    }
+
+    .search-filters {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    #search {
+        width: 30%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid var(--accent);
+    }
+
+    #statusFilter {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid var(--accent);
+    }
+
+    button {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: var(--accent);
+    }
+
+    /* Table Styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table th, table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid var(--accent);
+    }
+
+    table th {
+        background-color: var(--primary);
+        color: white;
+    }
+
+    td.active {
+        color: var(--highlight);
+    }
+
+    td.inactive {
+        color: var(--text);
+    }
+
+    button.edit-btn {
+        background-color: var(--accent);
+    }
+
+    button.deactivate-btn {
+        background-color: var(--highlight);
+    }
+
+    button.delete-btn {
+        background-color: #ff4d4d;
+    }
+
+    button.edit-btn:hover,
+    button.deactivate-btn:hover,
+    button.delete-btn:hover {
+        background-color: var(--hover-bg);
+    }
+
+    /* Pagination Styles */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination button {
+        padding: 10px;
+        margin: 0 5px;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .pagination button:hover {
+        background-color: var(--accent);
+    }
+
+    
+
+</style>
+<body>
+
+  <div class="sidebar">
+        <div>
+        <h2>Admin Panel</h2>
+        <a href="MainPage.html">Main Page</a>
+        <a href="Dashborad.html" class="active">Dashboard</a>
+        <a href="UserLists.html">User List</a>
+        <a href="ReservationList.html">Reservation List</a>
+        <a href="OffersList.html">Offers List</a>
+        <a href="PaymentHistory.html">Payment History</a>
+        <a href="Communication.html">Messages</a>
+        <a href="ChangePassword.html">Change Password</a>
+        <a href="Access.html">Grant Access</a>
+        </div>
+        <div>
+        <button class="logout-btn" id="logoutBtn" onclick="window.location.href='LoginAdmin.html'">Logout</button>
+        <small>&copy; 2025 Admin</small>
+        </div>
+  </div>
+
+  <div class="content">
+    <h1>Liste des Utilisateurs</h1>
+        
+        <!-- Search and Filter Section -->
+        <div class="search-filters">
+            <input type="text" id="search" placeholder="Rechercher par nom ou email..." />
+            <select id="statusFilter">
+                <option value="">Tous les statuts</option>
+                <option value="active">Actif</option>
+                <option value="inactive">Inactif</option>
+            </select>
+            <button onclick="applyFilters()">Filtrer</button>
+        </div>
+
+        <!-- User Table -->
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Date d'Inscription</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamically populated rows go here -->
+                <tr>
+                    <td>John Doe</td>
+                    <td>john.doe@example.com</td>
+                    <td>2025-01-12</td>
+                    <td class="active">Actif</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="deactivate-btn">Désactiver</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>jane.smith@example.com</td>
+                    <td>2025-02-03</td>
+                    <td class="inactive">Inactif</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="activate-btn">Activer</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Marc Dupont</td>
+                    <td>marc.dupont@example.com</td>
+                    <td>2025-03-10</td>
+                    <td class="active">Actif</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="deactivate-btn">Désactiver</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sophie Lemoine</td>
+                    <td>sophie.lemoine@example.com</td>
+                    <td>2025-01-28</td>
+                    <td class="inactive">Inactif</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="activate-btn">Activer</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Olivier Lambert</td>
+                    <td>olivier.lambert@example.com</td>
+                    <td>2025-03-05</td>
+                    <td class="active">Actif</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="deactivate-btn">Désactiver</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- Pagination Section -->
+        <div class="pagination">
+            <button class="prev">Précédent</button>
+            <button class="next">Suivant</button>
+        </div>
+
+    </div>
+
+  <footer>
+    &copy; 2025 Ideal Immobiliere – All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="users.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

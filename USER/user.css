@@ -1,0 +1,267 @@
+/* General Styles */
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fe;
+}
+/* Header Styling */
+.header {
+  position: relative;
+  min-height: 500px;
+  background: url('userbg.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 60px 20px;
+}
+
+/* Overlay for better contrast */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(35, 38, 131, 0.082);
+}
+
+/* Header Content */
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: #5e72e4;
+  color: white;
+  border: none;
+}
+
+.btn-light {
+  background: #086987;
+  color: #ffffff;
+  border: none;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+
+/* Profile Card */
+/* Overall container styling */
+.profile-card {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Card styling */
+.card {
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+}
+
+/* Profile Image Styling */
+.profile-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-image img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #1b3eb3; /* Green border for image */
+}
+
+/* Header styling with buttons */
+/* Header styling with centered buttons */
+.card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px; /* Adjust the gap between buttons */
+  justify-content: center; /* Center the buttons */
+}
+
+/* Add styles for buttons as needed */
+.btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  display: inline-block; /* Ensure buttons stay inline */
+}
+
+/* Button Colors */
+.btn-connect {
+  background-color: hsl(243, 79%, 40%);
+}
+
+.btn-connect:hover {
+  background-color:hsl(243, 79%, 40%);
+}
+
+.btn-message {
+  background-color: #007BFF;
+}
+
+.btn-message:hover {
+  background-color: #0056b3;
+}
+
+
+/* Ensure the row of the profile and the account info are side by side */
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* Ensures it remains responsive */
+}
+
+/* Adjust profile card to take up 4 columns */
+.profile-card {
+  flex: 0 0 33.333%; /* 4 out of 12 columns in a 12-column grid */
+  padding: 15px;
+}
+
+/* Adjust the account info card to take up 8 columns */
+.col-xl-8 {
+  flex: 0 0 66.666%; /* 8 out of 12 columns in a 12-column grid */
+  padding: 15px;
+}
+
+/* Profile information section */
+.card-body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.profile-info h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.profile-info .age {
+  font-weight: 300;
+}
+
+.profile-info p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.profile-info .icon {
+  margin-right: 8px;
+}
+
+/* Horizontal line styling */
+hr {
+  border: 1px solid #e0e0e0;
+  margin: 20px 0;
+}
+
+/* Profile card styling */
+.card-profile {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  margin-top: -50px;
+  position: relative;
+}
+
+.card-profile img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+.card-profile h3 {
+  margin-top: 10px;
+}
+
+/* Account Information card */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+/* Update for heading */
+.heading-small {
+  font-size: 15px; /* Adjust the font size */
+  font-weight: 700; /* Make the font weight bolder */
+  color: #333; /* Darker color for better clarity */
+  margin-bottom: 20px; /* Space below the heading */
+  text-transform: uppercase; /* Optional: Make it uppercase for emphasis */
+}
+
+/* Ensure the layout remains responsive */
+@media (max-width: 768px) {
+  .profile-card, .col-xl-8 {
+    flex: 0 0 100%; /* Stack the elements in mobile view */
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 15px;
+  background: #5a0695;
+  color: white;
+  margin-top: 30px;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="Squelette.css">
+  <title>Messages</title>
+</head>
+<style>
+    /* Styling for message list */
+    .message-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .message-item {
+        padding: 15px;
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .message-item:hover {
+        transform: scale(1.05);
+        background-color: #e0f7fa;
+    }
+
+    .message-user {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+
+    .user-name {
+        font-weight: bold;
+        color: #00695c;
+    }
+
+    .time {
+        font-size: 12px;
+        color: #888;
+    }
+
+    .message-preview {
+        font-size: 14px;
+        color: #333;
+        margin: 0;
+    }
+
+    /* Styling for detailed message view */
+    .message-details {
+        margin-top: 30px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+    }
+
+    #messageContent {
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    textarea {
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        outline: none;
+    }
+
+    textarea:focus {
+        border-color: #00695c;
+    }
+
+    button {
+        padding: 10px 15px;
+        background-color: #00695c;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #004d40;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .message-list {
+            gap: 10px;
+        }
+
+        .message-details {
+            margin-top: 20px;
+        }
+
+        textarea {
+            height: 80px;
+        }
+    }
+
+
+</style>
+<body>
+
+  <div class="sidebar">
+        <div>
+        <h2>Admin Panel</h2>
+        <a href="MainPage.html">Main Page</a>
+        <a href="Dashborad.html" class="active">Dashboard</a>
+        <a href="UserLists.html">User List</a>
+        <a href="ReservationList.html">Reservation List</a>
+        <a href="OffersList.html">Offers List</a>
+        <a href="PaymentHistory.html">Payment History</a>
+        <a href="Communication.html">Messages</a>
+        <a href="ChangePassword.html">Change Password</a>
+        <a href="Access.html">Grant Access</a>
+        </div>
+        <div>
+        <button class="logout-btn" id="logoutBtn" onclick="window.location.href='LoginAdmin.html'">Logout</button>
+        <small>&copy; 2025 Admin</small>
+        </div>
+  </div>
+
+  <div class="content">
+    <h1>Messages</h1>
+
+        <div class="message-list">
+            <div class="message-item" onclick="viewMessage(1)">
+                <div class="message-user">
+                    <span class="user-name">Ahmed </span>
+                    <span class="time">12:30</span>
+                </div>
+                <p class="message-preview">Bonjour, j'aimerais en savoir plus sur la réservation que j'ai effectuée...</p>
+            </div>
+            <div class="message-item" onclick="viewMessage(2)">
+                <div class="message-user">
+                    <span class="user-name">Mariem </span>
+                    <span class="time">11:45</span>
+                </div>
+                <p class="message-preview">Pouvez-vous confirmer ma commande, s'il vous plaît ?</p>
+            </div>
+            <div class="message-item" onclick="viewMessage(3)">
+                <div class="message-user">
+                    <span class="user-name">Youssef </span>
+                    <span class="time">10:20</span>
+                </div>
+                <p class="message-preview">J'ai quelques questions concernant les paiements...</p>
+            </div>
+            <div class="message-item" onclick="viewMessage(4)">
+                <div class="message-user">
+                    <span class="user-name"> Amine </span>
+                    <span class="time">09:15</span>
+                </div>
+                <p class="message-preview">Merci pour votre aide. J'ai reçu ma réservation avec succès.</p>
+            </div>
+            <div class="message-item" onclick="viewMessage(5)">
+                <div class="message-user">
+                    <span class="user-name"> Nour </span>
+                    <span class="time">08:00</span>
+                </div>
+                <p class="message-preview">Je suis intéressé par l'offre de la maison à vendre, pouvez-vous m'envoyer plus de détails ?</p>
+            </div>
+        </div>
+
+        <div class="message-details">
+            <h2>Discussion</h2>
+            <div id="messageContent">
+                <!-- Detailed message content will appear here after clicking a conversation -->
+            </div>
+            <textarea id="reply" placeholder="Écrire une réponse..."></textarea>
+            <button onclick="sendReply()">Envoyer</button>
+        </div>
+    </div>
+
+  <footer>
+    &copy; 2025 Ideal Immobiliere – All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="com.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="Squelette.css">
+  <title>Reservation</title>
+</head>
+<style>
+    /* Reservation List Table Styles */
+    #reservationTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    #reservationTable th, #reservationTable td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #reservationTable th {
+        background-color: #2d6a4f;
+        color: white;
+    }
+    .filter-section {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    #search {
+        padding: 8px;
+        width: 70%;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #statusFilter {
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #reservationTable .paid {
+        color: green;
+    }
+
+    #reservationTable .unpaid {
+        color: red;
+    }
+
+    #reservationTable td button {
+        padding: 5px 10px;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+
+    #reservationTable td button.edit-btn {
+        background-color: #2d6a4f;
+        color: white;
+    }
+
+    #reservationTable td button.delete-btn {
+        background-color: #e63946;
+        color: white;
+    }
+
+
+</style>
+<body>
+
+  <div class="sidebar">
+        <div>
+        <h2>Admin Panel</h2>
+        <a href="MainPage.html">Main Page</a>
+        <a href="Dashborad.html" class="active">Dashboard</a>
+        <a href="UserLists.html">User List</a>
+        <a href="ReservationList.html">Reservation List</a>
+        <a href="OffersList.html">Offers List</a>
+        <a href="PaymentHistory.html">Payment History</a>
+        <a href="Communication.html">Messages</a>
+        <a href="ChangePassword.html">Change Password</a>
+        <a href="Access.html">Grant Access</a>
+        </div>
+        <div>
+        <button class="logout-btn" id="logoutBtn" onclick="window.location.href='LoginAdmin.html'">Logout</button>
+        <small>&copy; 2025 Admin</small>
+        </div>
+  </div>
+
+    <div class="content">
+        <h1>Liste des Réservations</h1>
+
+        <!-- Search Filter Section -->
+        <div class="filter-section">
+            <input type="text" id="search" placeholder="Rechercher..." />
+            <select id="statusFilter">
+                <option value="">Statut</option>
+                <option value="paid">Payé</option>
+                <option value="unpaid">Non payé</option>
+            </select>
+        </div>
+
+        <!-- Reservation Table -->
+        <table id="reservationTable">
+            <thead>
+                <tr>
+                    <th>ID Réservation</th>
+                    <th>Nom de l'Utilisateur</th>
+                    <th>Bien Réservé</th>
+                    <th>Date d'Arrivée</th>
+                    <th>Date de Départ</th>
+                    <th>Statut de Paiement</th>
+                    <th>Montant</th>
+                    <th>Mode de Paiement</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#12345</td>
+                    <td>John Doe</td>
+                    <td>Appartement 101</td>
+                    <td>2025-04-25</td>
+                    <td>2025-04-30</td>
+                    <td class="paid">Payé</td>
+                    <td>500 DT</td>
+                    <td>Carte Bancaire</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#12346</td>
+                    <td>Jane Smith</td>
+                    <td>Appartement 102</td>
+                    <td>2025-04-20</td>
+                    <td>2025-04-22</td>
+                    <td class="unpaid">Non payé</td>
+                    <td>350 DT</td>
+                    <td>Virement Bancaire</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#12347</td>
+                    <td>Marc Dupont</td>
+                    <td>Villa 5</td>
+                    <td>2025-05-10</td>
+                    <td>2025-05-15</td>
+                    <td class="paid">Payé</td>
+                    <td>1500 DT</td>
+                    <td>Espèces</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#12348</td>
+                    <td>Clara Martin</td>
+                    <td>Appartement 201</td>
+                    <td>2025-04-15</td>
+                    <td>2025-04-20</td>
+                    <td class="unpaid">Non payé</td>
+                    <td>700 DT</td>
+                    <td>Carte Bancaire</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#12349</td>
+                    <td>Paul Lefevre</td>
+                    <td>Villa 3</td>
+                    <td>2025-05-01</td>
+                    <td>2025-05-07</td>
+                    <td class="paid">Payé</td>
+                    <td>2000 DT</td>
+                    <td>Virement Bancaire</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#12350</td>
+                    <td>Marie Dubois</td>
+                    <td>Appartement 303</td>
+                    <td>2025-04-28</td>
+                    <td>2025-05-05</td>
+                    <td class="unpaid">Non payé</td>
+                    <td>400 DT</td>
+                    <td>Espèces</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#12351</td>
+                    <td>Lucien Bernard</td>
+                    <td>Maison 7</td>
+                    <td>2025-06-01</td>
+                    <td>2025-06-07</td>
+                    <td class="paid">Payé</td>
+                    <td>1200 DT</td>
+                    <td>Carte Bancaire</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#12352</td>
+                    <td>Emilie Laroche</td>
+                    <td>Appartement 202</td>
+                    <td>2025-05-10</td>
+                    <td>2025-05-15</td>
+                    <td class="paid">Payé</td>
+                    <td>850 DT</td>
+                    <td>Virement Bancaire</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+  <footer>
+    &copy; 2025 Ideal Immobiliere – All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="res.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

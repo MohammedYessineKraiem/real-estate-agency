@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="Squelette.css">
+  <title>Acess Page</title>
+</head>
+<style>
+    /* Styling for the page */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f1fbe9;
+        margin: 0;
+        padding: 0;
+        color: #081c15;
+    }
+
+    .sidebar {
+        width: 250px;
+        background-color: #00695c;
+        color: white;
+        padding: 20px;
+        height: 100vh;
+        position: fixed;
+    }
+
+    .sidebar h2 {
+        margin-bottom: 20px;
+        color: #95d5b2;
+        font-size: 24px;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 10px;
+        margin-bottom: 10px;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+        background-color: #004d40;
+        font-weight: bold;
+    }
+
+    .content {
+        margin-left: 270px;
+        padding: 40px;
+        flex-grow: 1;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+        color: #00695c;
+    }
+
+    .header input {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        outline: none;
+    }
+
+    .header button {
+        padding: 10px 20px;
+        background-color: #00695c;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .header button:hover {
+        background-color: #004d40;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table th,
+    table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    table th {
+        background-color: #00695c;
+        color: white;
+    }
+
+    table td button {
+        padding: 6px 12px;
+        background-color: #40916c;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    table td button:hover {
+        background-color: #440f2c;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #00695c;
+        color: white;
+        font-size: 14px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+
+</style>
+<body>
+
+  <div class="sidebar">
+        <div>
+        <h2>Admin Panel</h2>
+        <a href="MainPage.html">Main Page</a>
+        <a href="Dashborad.html" class="active">Dashboard</a>
+        <a href="UserLists.html">User List</a>
+        <a href="ReservationList.html">Reservation List</a>
+        <a href="OffersList.html">Offers List</a>
+        <a href="PaymentHistory.html">Payment History</a>
+        <a href="Communication.html">Messages</a>
+        <a href="ChangePassword.html">Change Password</a>
+        <a href="Access.html">Grant Access</a>
+        </div>
+        <div>
+        <button class="logout-btn" id="logoutBtn" onclick="window.location.href='LoginAdmin.html'">Logout</button>
+        <small>&copy; 2025 Admin</small>
+        </div>
+  </div>
+
+  <div class="content">
+        <div class="header">
+            <h1>Accorder ou retirer l'accès d'administration</h1>
+            <div>
+                <input type="text" id="searchInput" placeholder="Rechercher un utilisateur...">
+                <button id="searchBtn">Rechercher</button>
+            </div>
+        </div>
+
+        <!-- User Table -->
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Rôle actuel</th>
+                    <th>Accorder l'accès</th>
+                    <th>Retirer l'accès</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic rows will be inserted here using JS -->
+            </tbody>
+        </table>
+    </div>
+
+  <footer>
+    &copy; 2025 Ideal Immobiliere – All rights reserved.
+  </footer>
+  <script>
+        // JavaScript to populate the table with existing users and grant/remove access functionality
+        const users = [
+            { id: 1, name: "Mohamed Ali", email: "mohamed.ali@email.com", role: "Utilisateur" },
+            { id: 2, name: "Fatima Zahra", email: "fatima.zahra@email.com", role: "Utilisateur" },
+            { id: 3, name: "Ahmed Youssef", email: "ahmed.youssef@email.com", role: "Administrateur" },
+            { id: 4, name: "Rania Ben Ali", email: "rania.benali@email.com", role: "Utilisateur" },
+            { id: 5, name: "Hassan Jaziri", email: "hassan.jaziri@email.com", role: "Utilisateur" },
+            { id: 6, name: "Leila Bensalem", email: "leila.bensalem@email.com", role: "Utilisateur" },
+            { id: 7, name: "Moez Khemiri", email: "moez.khemiri@email.com", role: "Administrateur" },
+            { id: 8, name: "Sami Bouazizi", email: "sami.bouazizi@email.com", role: "Utilisateur" },
+        ];
+
+        const userTable = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+
+        // Function to render the table
+        function renderTable(usersData) {
+            userTable.innerHTML = ""; // Clear existing table content
+            usersData.forEach(user => {
+                const row = userTable.insertRow();
+                row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.role}</td>
+                    <td><button onclick="grantAccess(${user.id})">Accorder l'accès</button></td>
+                    <td><button onclick="removeAccess(${user.id})">Retirer l'accès</button></td>
+                `;
+            });
+        }
+
+        // Initial render
+        renderTable(users);
+
+        // Function to grant access (change role to Admin)
+        function grantAccess(userId) {
+            const user = users.find(u => u.id === userId);
+            if (user && user.role !== "Administrateur") {
+                user.role = "Administrateur";
+                alert(`L'accès d'administration a été accordé à ${user.name}.`);
+                renderTable(users);
+            } else {
+                alert("Cet utilisateur est déjà un administrateur.");
+            }
+        }
+
+        // Function to remove access (change role back to User)
+        function removeAccess(userId) {
+            const user = users.find(u => u.id === userId);
+            if (user && user.role === "Administrateur") {
+                user.role = "Utilisateur";
+                alert(`L'accès d'administration a été retiré à ${user.name}.`);
+                renderTable(users);
+            } else {
+                alert("Cet utilisateur n'est pas un administrateur.");
+            }
+        }
+
+        // Search function
+        document.getElementById('searchBtn').addEventListener('click', function () {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            const filteredUsers = users.filter(user =>
+                user.name.toLowerCase().includes(searchQuery) ||
+                user.email.toLowerCase().includes(searchQuery)
+            );
+            renderTable(filteredUsers);
+        });
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

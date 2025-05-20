@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="Squelette.css">
+  <title>Payment</title>
+</head>
+<style>
+    /* Payment History CSS */
+    .content {
+        padding: 20px;
+        margin-left: 270px;
+        background-color: #fff;
+    }
+
+    h1 {
+        font-size: 28px;
+        color: #2d6a4f;
+        margin-bottom: 20px;
+    }
+
+    .filter-section {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    #search {
+        padding: 8px;
+        width: 70%;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #statusFilter {
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    table th, table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #2d6a4f;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    table td {
+        font-size: 14px;
+    }
+
+    .completed {
+        color: #40916c;
+        font-weight: bold;
+    }
+
+    .pending {
+        color: #e63946;
+        font-weight: bold;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .edit-btn {
+        background-color: #f1faee;
+        color: #2d6a4f;
+        margin-right: 8px;
+    }
+
+    .edit-btn:hover {
+        background-color: #2d6a4f;
+        color: #fff;
+    }
+
+    .delete-btn {
+        background-color: #e63946;
+        color: #fff;
+    }
+
+    .delete-btn:hover {
+        background-color: #d32f2f;
+    }
+
+    @media (max-width: 768px) {
+        table th, table td {
+            font-size: 12px;
+            padding: 10px;
+        }
+
+        #search {
+            width: 60%;
+        }
+
+        #statusFilter {
+            width: 30%;
+        }
+    }
+
+
+</style>
+<body>
+
+  <div class="sidebar">
+        <div>
+        <h2>Admin Panel</h2>
+        <a href="MainPage.html">Main Page</a>
+        <a href="Dashborad.html" class="active">Dashboard</a>
+        <a href="UserLists.html">User List</a>
+        <a href="ReservationList.html">Reservation List</a>
+        <a href="OffersList.html">Offers List</a>
+        <a href="PaymentHistory.html">Payment History</a>
+        <a href="Communication.html">Messages</a>
+        <a href="ChangePassword.html">Change Password</a>
+        <a href="Access.html">Grant Access</a>
+        </div>
+        <div>
+        <button class="logout-btn" id="logoutBtn" onclick="window.location.href='LoginAdmin.html'">Logout</button>
+        <small>&copy; 2025 Admin</small>
+        </div>
+  </div>
+
+  <div class="content">
+    <h1>Historique des paiements</h1>
+
+        <div class="filter-section">
+            <input type="text" id="search" placeholder="Rechercher un paiement...">
+            <select id="statusFilter">
+                <option value="">Tout</option>
+                <option value="completed">Terminé</option>
+                <option value="pending">En attente</option>
+            </select>
+        </div>
+
+        <table id="paymentTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom de l'utilisateur</th>
+                    <th>Montant</th>
+                    <th>Méthode de paiement</th>
+                    <th>Date de paiement</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>Mahmoud</td>
+                    <td>1500 DT</td>
+                    <td>Carte bancaire</td>
+                    <td>12/04/2025</td>
+                    <td class="completed">Terminé</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Sami</td>
+                    <td>800 DT</td>
+                    <td>Virement bancaire</td>
+                    <td>15/04/2025</td>
+                    <td class="pending">En attente</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                </tr>
+                    <td>003</td>
+                    <td>amine</td>
+                    <td>1500000 DT</td>
+                    <td>Virement bancaire</td>
+                    <td>15/04/2025</td>
+                    <td class="completed">En attente</td>
+                    <td>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </td>
+                <tr>
+
+                </tr>
+                <!-- Add more rows here -->
+            </tbody>
+        </table>
+    </div>
+
+  <footer>
+    &copy; 2025 Ideal Immobiliere – All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="res.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

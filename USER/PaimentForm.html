@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reservation Form</title>
+
+    <!-- FUENTE GOOGLE FONTS : Poppins Montserrat-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .radio-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .radio-option input[type="radio"] {
+    display: none;
+    }
+
+    .radio-option.active {
+    background-color: #e6f7ff;
+    border-color: #2196F3;
+    color: #0b355e;
+    }
+
+    .radio-option:hover {
+    background-color: #f0f0f0;
+    }
+    .ds-panel-content {
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.ds-panel-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+    .ds-panel-content label {
+    display: block;
+    margin-top: 15px;
+    color: #000;
+    font-weight: 500;
+    transition: 0.3s;
+    }
+    .ds-panel-content input[type="text"],
+    .ds-panel-content input[type="email"],
+    .ds-panel-content input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    }
+    .ds-panel-content input:focus + label,
+    .ds-panel-content input:not(:placeholder-shown) + label {
+    color: #007bff;
+    transform: scale(1.05);
+    }
+    .checkbox-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    }
+    .radio-option {
+    flex: 1;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    position: relative;
+    }
+    .pay-btn, .cancel-btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    }
+    .cancel-btn {
+    background-color: #dc3545;
+    margin-top: 10px;
+    }
+    .pay-btn:hover {
+    background-color: #0056b3;
+    }
+    .cancel-btn:hover {
+    background-color: #a71d2a;
+    }
+</style>
+<body>
+    <div class="admin-dashboard">
+        <div class="ds-left-menu ">
+            <button class="btn-menu">
+                <i class="fa-solid fa-circle-chevron-left"></i>
+            </button>
+            <div class="ds-perfil">
+                <div class="foto">
+                    <img src="assets/3135715.png" alt="">
+                </div>
+                <div class="info-perfil">
+                    <span>User</span>
+                    <h3>Mahmoud</h3>
+                </div>
+            </div>
+            <div class="ds-menu">
+                <ul>
+                    <li><a href="acceuil.html"><i class="fa-solid fa-home"></i><span>Home</span></a></li>
+                    <li><a href="ListOfHouses.html"><i class="fa-solid fa-truck-fast"></i><span>List of Houses</span></a></li>
+                    <li><a href="ContactUs.html"><i class="fa-solid fa-gift"></i><span>Contact</span></a></li>
+                    <li><a href="AboutUs.html"><i class="fa-solid fa-gift"></i><span>About Us</span></a></li>
+                    <li><a href=""><i class="fa-solid fa-basket-shopping"></i><span>Ordenes</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Reportes</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-sliders"></i><span>Ajustes</span></a></li>
+                </ul>
+            </div>
+            <div class="sign-off">
+                <a href="LoginUser.html" class="btn-sign-off">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    <span>log out</span>
+                </a>
+            </div>
+        </div>
+        <div class="ds-panel">
+            <div class="panel-header">
+                <header>
+                    <div class="header-content">
+                        <h1>Welcome to Our Rental Website</h1>
+                        <p>Your ideal home is just a click away</p>
+                    </div>
+                </header>
+            </div>
+            <br><br>
+            <div class="ds-panel-content" id="formContainer">
+                <h2>Paiement</h2>
+                <form id="paymentForm">
+                    <label>Nom complet :</label>
+                    <input type="text" name="fullname" placeholder="Entrez votre nom complet" required>
+
+                    <label>Email :</label>
+                    <input type="email" name="email" id="emailInput" placeholder="exemple@domaine.com" required>
+                    <span id="emailMessage" style="font-size: 12px; color: red;"></span>
+
+                    <label>Montant (DT) :</label>
+                    <input type="number" name="amount" placeholder="Ex: 1200" required>
+
+                    <label>Service demandé :</label>
+                    <input type="text" name="service" placeholder="Ex: Location maison" required>
+
+                    <label>Méthode de paiement :</label>
+                    <div class="checkbox-group" id="paiementOptions">
+                        <label class="radio-option">
+                            <input type="radio" name="paiement" value="Espèces">
+                            <span>Espèces</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="paiement" value="Carte Bancaire">
+                            <span>Carte Bancaire</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="paiement" value="Virement">
+                            <span>Virement</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="pay-btn">Payer</button>
+                    <button type="button" class="cancel-btn" onclick="window.location.href='NewDetailsHouse.html'">Annuler</button>
+                </form>
+                <script>
+                    // 1. Focus animation and active label
+                    document.querySelectorAll('input').forEach(input => {
+                        input.addEventListener('focus', () => {
+                            input.previousElementSibling?.classList.add('focused');
+                        });
+                    });
+
+                    // 2. Email validation
+                    document.getElementById('emailInput').addEventListener('input', function() {
+                        const message = document.getElementById('emailMessage');
+                        if (this.value && !this.value.includes('@')) {
+                            message.textContent = "Email invalide.";
+                        } else {
+                            message.textContent = "";
+                        }
+                    });
+
+                    // 3. Appear animation
+                    window.addEventListener('DOMContentLoaded', () => {
+                        document.getElementById('formContainer').classList.add('visible');
+                    });
+
+                    const options = document.querySelectorAll('.radio-option');
+                    const form = document.getElementById('paymentForm');
+                    options.forEach(option => {
+                        const input = option.querySelector('input[type="radio"]');
+                        input.addEventListener('change', () => {
+                            options.forEach(o => o.classList.remove('active'));
+                            option.classList.add('active');
+                        });
+                    });
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        const fullname = form.fullname.value.trim();
+                        const email = form.email.value.trim();
+                        const amount = form.amount.value.trim();
+                        const service = form.service.value.trim();
+                        const paiement = form.paiement.value;
+                        if (!fullname || !email.includes('@') || !amount || !service || !paiement) {
+                            alert("Veuillez remplir tous les champs correctement.");
+                            return;
+                        }
+                        alert("Paiement effectué avec succès !");
+                        window.location.href = "ListOfHouses.html";
+                    });
+                </script>
+            </div>
+            <footer class="modern-footer">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <h2>Idéal Immobilier</h2>
+                        <p>Agence située aux Berges du Lac, nous vous accompagnons dans l'achat, la vente ou la location de biens immobiliers.</p>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li>📍 Rue du Lac Ammar, 1053 Tunis</li>
+                            <li>📞 (+216) 53 540 819</li>
+                            <li>📧 contact@idealimmo.tn</li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h3>Liens utiles</h3>
+                        <ul>
+                            <li><a href="#">Biens à vendre</a></li>
+                            <li><a href="#">Biens à louer</a></li>
+                            <li><a href="#">Bureaux & Commerces</a></li>
+                            <li><a href="#">Évaluation gratuite</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© Idéal Immobilier 2025 — Tous droits réservés</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/075922b03a.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>
