@@ -61,59 +61,6 @@ This website boasts a rich set of functionalities, catering to both administrati
 * **Database Interaction:**
     * **PHP Data Objects (PDO):** Secure and efficient database access from PHP.
 
----
-
-## 📂 Project Structure
-
-The project is organized to separate concerns, making it maintainable and scalable. While specific folder names aren't visible, based on the file names, it appears to follow a logical structure:
-
-├── assets/                  # Images, potentially CSS/JS if separated
-│   ├── images/              # Property images, banners, user avatars, etc.
-│   └── (other asset folders)
-├── admin/                   # PHP, HTML, CSS, JS files specifically for the Admin panel
-│   ├── Access.php
-│   ├── admin_js.js
-│   ├── ChangePassword.php
-│   ├── Dashboard.php
-│   ├── DashboardJS.js
-│   ├── LoginAdmin.php
-│   ├── MainPage.php
-│   ├── OffersList.php
-│   ├── PaymentHistory.php
-│   ├── ReservationList.php
-│   ├── UserLists.php
-│   ├── components.css       # Admin-specific CSS
-│   └── (other admin related files)
-├── public/                  # Potentially public-facing HTML, CSS, JS files
-│   ├── index.php            # Main entry point
-│   ├── AboutUs.php
-│   ├── Contact.php
-│   ├── ReservationForm.php
-│   ├── search_message.php
-│   ├── (other user-facing pages)
-├── includes/                # Common PHP functions, database connection
-│   ├── db_connection.php    # Database connection logic
-│   ├── Communication.php    # Communication related PHP logic
-│   └── (other helper PHP files)
-├── css/                     # Global CSS files
-│   ├── style.css
-│   ├── StyleAll.css
-│   ├── squelette.css
-│   └── (other CSS files)
-├── js/                      # Global JavaScript files
-│   ├── app.js
-│   ├── com.js
-│   ├── res.js
-│   ├── users.js
-│   ├── offers.js
-│   ├── pay.js
-│   ├── searchbar.js
-│   ├── send_message.js
-│   └── (other JS files)
-├── .env.example             # Example environment variables (for configuration)
-├── README.md                # This file
-└── (other root files like config.php)
----
 
 ## 🚀 Getting Started
 
@@ -132,10 +79,10 @@ Before you begin, ensure you have the following installed:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/your-username/agence-immobilier.git](https://github.com/your-username/agence-immobilier.git)
+    git clone [https://github.com/MohammedYessineKraiem/real-estate-agency.git](https://github.com/MohammedYessineKraiem/real-estate-agency.git)
     cd agence-immobilier
     ```
-    *(Replace `your-username/agence-immobilier` with your actual GitHub repository path)*
+    *(Replace `MohammedYessineKraiem/real-estate-agency` with your actual GitHub repository path)*
 
 2.  **Set up Database:**
     * Create a new MySQL database (e.g., `bzbzd`).
